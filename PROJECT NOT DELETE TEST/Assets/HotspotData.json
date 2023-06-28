@@ -1,0 +1,34 @@
+{
+    "name": "Museu da Oliveira e do Azeite",
+    "scaleX": 9,
+    "scaleY": 9,
+    "scaleZ": 9,
+    "images": [{
+        "materialName": "GS14",
+        "mapping": [{
+            "type": "text",
+            "information": "Candeia de Azeite\n\nTrata-se de um recipiente com azeite como combustível onde sobre o qual tipicamente flutua um um pavio encerado fixo. É um utensílio cujo o uso remonta à pré-história e se mantem até aos dias de hoje.",
+            "positionX": 2.332,
+            "positionY": -0.73,
+            "positionZ": 3.525
+        }, {
+            "type": "text",
+            "information": "TESTANDO 2",
+            "positionX": 1.064,
+            "positionY": -0.933,
+            "positionZ": 3.964
+        }, {
+            "type": "text",
+            "information": "TESTANDO 3",
+            "positionX": -0.428,
+            "positionY": -0.99,
+            "positionZ": 3.966
+        }, {
+            "type": "text",
+            "information": "TESTANDO 4",
+            "positionX": 3.079,
+            "positionY": -0.599,
+            "positionZ": 2.977
+        }]
+    }]
+}
