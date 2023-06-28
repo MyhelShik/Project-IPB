@@ -145,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f8f17b8978dc64fb03eec087cdbf6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  informationDisplay: {fileID: 2205278445786424412, guid: 288b96bcc89afb248884b8b58777d923, type: 3}
   information: A virtual reality headset is a head-mounted device that provides virtual
     reality for the wearer. Virtual reality (VR) headsets are widely used with video
     games but they are also used in other applications, including simulators and
@@ -153,3 +152,4 @@ MonoBehaviour:
     images for each eye), stereo sound, and head motion tracking sensors (which may
     include gyroscopes, accelerometers, magnetometers, structured light systems etc.).
     Some VR headsets also have eye tracking sensors and gaming controllers.
+  informationDisplay: {fileID: 2205278445786424412, guid: 288b96bcc89afb248884b8b58777d923, type: 3}
