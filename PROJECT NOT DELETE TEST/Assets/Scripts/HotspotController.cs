@@ -9,10 +9,12 @@ public class HotspotController : MonoBehaviour
     [Header("Hotspot Initialization Config:")]
     [Tooltip("JSON file location with hotspot informations and map.")]
     [SerializeField] string filePath = "Assets/HotspotData.json";
-    [Tooltip("All materials with the 360º images used in this hotspot.")]
+    [Tooltip("All materials with the 360ï¿½ images used in this hotspot.")]
     [SerializeField] List<Material> scenaryMaterials;
     [SerializeField] GameObject canvasMapping;
     [SerializeField] GameObject mappingButton;
+    [SerializeField] GameObject mappingButton2;
+    [SerializeField] GameObject mappingButton3;
     [SerializeField] GameObject canvasInfo;
 
     [SerializeField] string typeTextID = "text";
