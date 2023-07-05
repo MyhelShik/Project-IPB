@@ -1,13 +1,13 @@
 {
     "name": "Museu da Oliveira e do Azeite",
-    "scaleX": 9,
-    "scaleY": 9,
-    "scaleZ": 9,
+    "scaleX": 5,
+    "scaleY": 5,
+    "scaleZ": 5,
     "images": [{
         "materialName": "GS14",
         "mapping": [{
             "type": "text",
-            "information": "TESTANDO 4",
+            "information": "Temperature:",
             "positionX": 3.079,
             "positionY": -0.599,
             "positionZ": 2.977

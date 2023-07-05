@@ -13,8 +13,6 @@ public class HotspotController : MonoBehaviour
     [SerializeField] List<Material> scenaryMaterials;
     [SerializeField] GameObject canvasMapping;
     [SerializeField] GameObject mappingButton;
-    [SerializeField] GameObject mappingButton2;
-    [SerializeField] GameObject mappingButton3;
     [SerializeField] GameObject canvasInfo;
 
     [SerializeField] string typeTextID = "text";

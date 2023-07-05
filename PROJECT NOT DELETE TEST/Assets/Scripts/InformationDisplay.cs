@@ -7,7 +7,8 @@ public class InformationDisplay : MonoBehaviour
 {
     [Header("Information Display Config:")]
     [SerializeField] TextMeshProUGUI infomation;
-    [SerializeField] Transform canvasRotationPoint;
+    [SerializeField] Transform canvasRotationPoint; 
+    [SerializeField] Transform canvasRotationPoint2;
     [SerializeField] Transform playerCamera;
     [SerializeField] float distance = 5f;
 

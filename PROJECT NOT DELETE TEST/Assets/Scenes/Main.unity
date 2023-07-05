@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1499,13 +1499,8 @@ MonoBehaviour:
   filePath: Assets/HotspotData.json
   scenaryMaterials:
   - {fileID: 2100000, guid: b0cce86e406d8ce4598a0c5025c290c7, type: 2}
-  - {fileID: 2100000, guid: 6914b31df90a65a4495678cdb0a841b8, type: 2}
-  - {fileID: 2100000, guid: 1a01aa26183f41745b937f19d36344f2, type: 2}
-  - {fileID: 2100000, guid: a889f1b1605bbae49b11c238c23cbaaf, type: 2}
   canvasMapping: {fileID: 7185902354534491321, guid: ae12d073cfcfd824299038965ec02bc6, type: 3}
   mappingButton: {fileID: 4202358981714679659, guid: 34f379e6b9004fa4399d2ba09d85b6d1, type: 3}
-  mappingButton2: {fileID: 7678567686730432832, guid: d4104e0a710b39346b46513577ebcc86, type: 3}
-  mappingButton3: {fileID: 9199475230097681396, guid: 4a8ab1da91aeb3c4abf9d42bb6af5a29, type: 3}
   canvasInfo: {fileID: 5353335436024060533, guid: ce07379f804918443bcb206b1c12d9b7, type: 3}
   typeTextID: text
   typeImageID: image
