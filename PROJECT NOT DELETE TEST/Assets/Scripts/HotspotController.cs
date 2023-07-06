@@ -13,9 +13,12 @@ public class HotspotController : MonoBehaviour
     [SerializeField] List<Material> scenaryMaterials;
     [SerializeField] GameObject canvasMapping;
     [SerializeField] GameObject mappingButton;
+    [SerializeField] GameObject mappingButtonInMenu;
     [SerializeField] GameObject canvasInfo;
 
     [SerializeField] string typeTextID = "text";
+    [SerializeField] string typeTextID2 = "text2";
+    
     [SerializeField] string typeImageID = "image";
     [SerializeField] string typeVideoID = "video";
     [SerializeField] string typeTransitionID = "transition";
@@ -29,7 +32,8 @@ public class HotspotController : MonoBehaviour
 
     private byte actualIndex = 0;
 
-    void Start() {
+    void Start() 
+    {
 
         camera = FindObjectOfType<Camera>();
 
@@ -37,12 +41,14 @@ public class HotspotController : MonoBehaviour
 
     }
 
-    private void InitializeHotspot() {
+    private void InitializeHotspot() 
+    {
         StreamReader reader = new StreamReader(filePath);
         jsonText = reader.ReadToEnd();
         reader.Close();
 
-        if (jsonText.Trim().Length == 0) {
+        if (jsonText.Trim().Length == 0) 
+        {
             Debug.LogError("JSON file is empty.");
             return;
 
@@ -64,7 +70,8 @@ public class HotspotController : MonoBehaviour
 
     }
 
-    private void CreateHotspotScenary() {
+    private void CreateHotspotScenary() 
+    {
         hotspotScenary = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         hotspotScenary.name = "Hotspot Scenary";
         hotspotScenary.transform.parent = gameObject.transform;
@@ -72,10 +79,12 @@ public class HotspotController : MonoBehaviour
 
     }
 
-    private void MapImage() {
+    private void MapImage() 
+    {
         byte count = 0;
 
-        foreach (Mapping map in hotspot.images[actualIndex].mapping) {
+        foreach (Mapping map in hotspot.images[actualIndex].mapping) 
+        {
             GameObject newMappingButton = Instantiate(mappingButton, canvasMapping.transform);
             newMappingButton.transform.position = new Vector3(map.positionX, map.positionY, map.positionZ);
 
@@ -86,10 +95,14 @@ public class HotspotController : MonoBehaviour
             if (map.type.Equals(typeTextID))
                 InstantiateCanvasInfo(ref count, map, newMappingButton);
 
+            if (map.type.Equals(typeTextID2))
+                InstantiateCanvasInfo(ref count, map, newMappingButton);
+
         }
     }
 
-    private byte InstantiateCanvasInfo(ref byte count, Mapping map, GameObject newMappingButton) {
+    private byte InstantiateCanvasInfo(ref byte count, Mapping map, GameObject newMappingButton) 
+    {
         GameObject newCanvasInfo = Instantiate(canvasInfo.gameObject, newMappingButton.transform);
 
         newCanvasInfo.name = newCanvasInfo.name + " | " + count++;
@@ -99,9 +112,12 @@ public class HotspotController : MonoBehaviour
         return count;
     }
 
-    private Material FindMaterial(string materialName) {
-        foreach (Material mat in scenaryMaterials) {
-            if (mat.name.Contains(materialName)) {
+    private Material FindMaterial(string materialName) 
+    {
+        foreach (Material mat in scenaryMaterials) 
+        {
+            if (mat.name.Contains(materialName)) 
+            {
                 return mat;
 
             }

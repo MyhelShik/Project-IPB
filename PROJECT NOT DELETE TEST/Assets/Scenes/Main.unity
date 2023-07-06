@@ -1501,8 +1501,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0cce86e406d8ce4598a0c5025c290c7, type: 2}
   canvasMapping: {fileID: 7185902354534491321, guid: ae12d073cfcfd824299038965ec02bc6, type: 3}
   mappingButton: {fileID: 4202358981714679659, guid: 34f379e6b9004fa4399d2ba09d85b6d1, type: 3}
+  mappingButtonInMenu: {fileID: 7408208359933659762, guid: 3efa41a223319564680a7e4e22cc47d2, type: 3}
   canvasInfo: {fileID: 5353335436024060533, guid: ce07379f804918443bcb206b1c12d9b7, type: 3}
   typeTextID: text
+  typeTextID2: text2
   typeImageID: image
   typeVideoID: video
   typeTransitionID: transition

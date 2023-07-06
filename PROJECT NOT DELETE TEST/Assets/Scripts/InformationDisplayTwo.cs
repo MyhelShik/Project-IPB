@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class InformationDisplay : MonoBehaviour
+public class InformationDisplayTwo : MonoBehaviour
 {
     [Header("Information Display Config:")]
     [SerializeField] TextMeshProUGUI infomation;

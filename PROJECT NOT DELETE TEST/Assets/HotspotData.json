@@ -8,9 +8,15 @@
         "mapping": [{
             "type": "text",
             "information": "Temperature:",
-            "positionX": 3.079,
+            "positionX": 3.079, 
             "positionY": -0.599,
             "positionZ": 2.977
-        }]
+        }],
+
+            "type": "text2",
+            "information": "cock:",
+            "positionX": 1.945, 
+            "positionY": -0.599,
+            "positionZ": 2.977
     }]
 }
