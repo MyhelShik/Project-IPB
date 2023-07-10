@@ -21,24 +21,27 @@ public class InformationDisplay : MonoBehaviour
         playerCamera = FindObjectOfType<Camera>().gameObject.transform;
         canvasRotationPoint = Instantiate(canvasRotationPointPrefab, transform);
 
-                    // pos calc
+        // Calculate the position for the second canvasRotationPoint
         Vector3 offsetPosition = -canvasRotationPoint.right * offset;
-        canvasRotationPoint2 = Instantiate(canvasRotationPointPrefab, transform.position + offsetPosition, transform.rotation);
+        /*canvasRotationPoint2 = Instantiate(canvasRotationPointPrefab, transform);*/
     }
 
-    public void DisplayInformation(string objectInformation)
+    public void DisplayInformation(string sensorUuid)
     {
-        infomation.text = objectInformation;
+        Debug.Log(sensorUuid);
+        infomation.text = sensorUuid;
+
+
 
         canvasRotationPoint.position = playerCamera.transform.position + playerCamera.transform.forward * distance;
         canvasRotationPoint.position = new Vector3(canvasRotationPoint.position.x, 1f, canvasRotationPoint.position.z);
         canvasRotationPoint.rotation = new Quaternion(0f, playerCamera.transform.rotation.y, 0f, playerCamera.transform.rotation.w);
         canvasRotationPoint.gameObject.SetActive(true);
 
-        
-        Vector3 offsetPosition = -canvasRotationPoint.right * offset;
+        // Calculate the position for the second canvasRotationPoint based on the first one
+        /*Vector3 offsetPosition = -canvasRotationPoint.right * offset;
         canvasRotationPoint2.position = canvasRotationPoint.position + offsetPosition;
-        canvasRotationPoint2.rotation = canvasRotationPoint.rotation;
-        canvasRotationPoint2.gameObject.SetActive(true);
+        canvasRotationPoint2.rotation = new Quaternion(0f, playerCamera.transform.rotation.y, 0f, playerCamera.transform.rotation.w);
+        canvasRotationPoint2.gameObject.SetActive(true);*/
     }
 }

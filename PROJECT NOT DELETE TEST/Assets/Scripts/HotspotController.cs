@@ -15,9 +15,9 @@ public class HotspotController : MonoBehaviour
     [SerializeField] GameObject mappingButton;
     [SerializeField] GameObject mappingButtonInMenu;
     [SerializeField] GameObject canvasInfo;
+    //[SerializeField] GameObject canvasInfo2; //added instance canvas
 
     [SerializeField] string typeTextID = "text";
-    [SerializeField] string typeTextID2 = "text2";
     
     [SerializeField] string typeImageID = "image";
     [SerializeField] string typeVideoID = "video";
@@ -75,8 +75,8 @@ public class HotspotController : MonoBehaviour
         hotspotScenary = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         hotspotScenary.name = "Hotspot Scenary";
         hotspotScenary.transform.parent = gameObject.transform;
-        hotspotScenary.transform.localScale = new Vector3(hotspot.scaleX, hotspot.scaleY, hotspot.scaleZ);
-
+        hotspotScenary.transform.localScale = new Vector3(5,5,5);
+        
     }
 
     private void MapImage() 
@@ -85,18 +85,27 @@ public class HotspotController : MonoBehaviour
 
         foreach (Mapping map in hotspot.images[actualIndex].mapping) 
         {
+
             GameObject newMappingButton = Instantiate(mappingButton, canvasMapping.transform);
             newMappingButton.transform.position = new Vector3(map.positionX, map.positionY, map.positionZ);
+            ObjectInformation objectinformation = newMappingButton.GetComponent<ObjectInformation>();
+
+            objectinformation.Uuid = map.uuidsensor;
+
+ 
+            
 
             newMappingButton.name = newMappingButton.name + " | " + count;
 
             newMappingButton.transform.LookAt(camera.transform, Vector3.one);
+            
 
             if (map.type.Equals(typeTextID))
                 InstantiateCanvasInfo(ref count, map, newMappingButton);
 
-            if (map.type.Equals(typeTextID2))
-                InstantiateCanvasInfo(ref count, map, newMappingButton);
+            //if(map.type.Equals(typeTextID2))
+                //InstantiateCanvasInfo2(ref count, map, newMappingButton);
+    
 
         }
     }
@@ -111,6 +120,18 @@ public class HotspotController : MonoBehaviour
         newMappingButton.GetComponent<ObjectInformation>().SetInformationDisplay(newCanvasInfo.GetComponent<InformationDisplay>());
         return count;
     }
+            //new function avoid
+    /*private byte InstantiateCanvasInfo2(ref byte count, Mapping map, GameObject newMappingButton) 
+    {
+        GameObject newCanvasInfo = Instantiate(canvasInfo2.gameObject, newMappingButton.transform);
+
+        newCanvasInfo.name = newCanvasInfo.name + " | " + count++;
+
+        newMappingButton.GetComponent<ObjectInformation>().SetInformation(map.information);
+        newMappingButton.GetComponent<ObjectInformation>().SetInformationDisplay(newCanvasInfo.GetComponent<InformationDisplay>());
+        return count;
+    }
+    */
 
     private Material FindMaterial(string materialName) 
     {

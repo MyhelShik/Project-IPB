@@ -8,10 +8,18 @@ public class ObjectInformation : MonoBehaviour
     [SerializeField] string information = "";
     [SerializeField] InformationDisplay informationDisplay;
 
+    
+    private string _uuid;
+    public string Uuid
+    {
+        get { return _uuid; }
+        set { _uuid = value; }
+    }   
+
     public void ShowInformation() {
         if (information.Trim().Length == 0)
             information = "[REDACTED]";
-        informationDisplay.DisplayInformation(information);
+        informationDisplay.DisplayInformation(_uuid);
     }
 
     public void SetInformation(string information) {

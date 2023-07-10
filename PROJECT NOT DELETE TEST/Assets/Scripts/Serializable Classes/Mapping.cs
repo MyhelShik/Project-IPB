@@ -1,5 +1,6 @@
 [System.Serializable]
 public class Mapping {
+    public string uuidsensor;
     public string type;
     public string information;
     public float positionX;
