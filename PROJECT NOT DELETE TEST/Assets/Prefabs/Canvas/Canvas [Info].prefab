@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4345216172853021871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15.39, y: 8.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7354162428772703966}
@@ -740,9 +740,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infomation: {fileID: 5353335436176768883}
-  canvasRotationPoint: {fileID: 5353335435090848771}
+  canvasRotationPointPrefab: {fileID: 5353335435090848771}
   playerCamera: {fileID: 0}
   distance: 1.25
+  offset: 1
 --- !u!1 &5353335436176768893
 GameObject:
   m_ObjectHideFlags: 0
