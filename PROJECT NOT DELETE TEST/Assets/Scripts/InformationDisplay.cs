@@ -13,7 +13,6 @@ public class InformationDisplay : MonoBehaviour
     [SerializeField] float offset = 5;
 
     private Transform canvasRotationPoint;
-    private Transform canvasRotationPoint2;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +20,8 @@ public class InformationDisplay : MonoBehaviour
         playerCamera = FindObjectOfType<Camera>().gameObject.transform;
         canvasRotationPoint = Instantiate(canvasRotationPointPrefab, transform);
 
-        // Calculate the position for the second canvasRotationPoint
+        // Calculate the position for the second canvasRotationPoint? No need ig
         Vector3 offsetPosition = -canvasRotationPoint.right * offset;
-        /*canvasRotationPoint2 = Instantiate(canvasRotationPointPrefab, transform);*/
     }
 
     public void DisplayInformation(string sensorUuid)
@@ -38,10 +36,5 @@ public class InformationDisplay : MonoBehaviour
         canvasRotationPoint.rotation = new Quaternion(0f, playerCamera.transform.rotation.y, 0f, playerCamera.transform.rotation.w);
         canvasRotationPoint.gameObject.SetActive(true);
 
-        // Calculate the position for the second canvasRotationPoint based on the first one
-        /*Vector3 offsetPosition = -canvasRotationPoint.right * offset;
-        canvasRotationPoint2.position = canvasRotationPoint.position + offsetPosition;
-        canvasRotationPoint2.rotation = new Quaternion(0f, playerCamera.transform.rotation.y, 0f, playerCamera.transform.rotation.w);
-        canvasRotationPoint2.gameObject.SetActive(true);*/
     }
 }
