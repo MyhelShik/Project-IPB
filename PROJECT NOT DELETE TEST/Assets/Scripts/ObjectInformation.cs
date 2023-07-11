@@ -16,18 +16,21 @@ public class ObjectInformation : MonoBehaviour
         set { _uuid = value; }
     }   
 
-    public void ShowInformation() {
+    public void ShowInformation() 
+    {
         if (information.Trim().Length == 0)
             information = "[REDACTED]";
         informationDisplay.DisplayInformation(_uuid);
     }
 
-    public void SetInformation(string information) {
+    public void SetInformation(string information) 
+    {
         this.information = information;
 
     }
 
-    public void SetInformationDisplay(InformationDisplay informationDisplay) {
+    public void SetInformationDisplay(InformationDisplay informationDisplay) 
+    {
         this.informationDisplay = informationDisplay;
 
     }
