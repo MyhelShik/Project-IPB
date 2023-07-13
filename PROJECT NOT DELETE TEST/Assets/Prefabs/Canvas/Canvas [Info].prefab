@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1003944997534410014}
   - component: {fileID: 8995585073528633832}
   m_Layer: 0
-  m_Name: uuidsensor (1)
+  m_Name: sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.05
   m_fontSizeMax: 0.1
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4665652627480982189}
   - component: {fileID: 5350785664107672305}
   m_Layer: 0
-  m_Name: name (1)
+  m_Name: room name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,7 +585,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5353335435656240853}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -989,7 +989,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5353335435656240853}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1111,7 +1111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5353335435090848771
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ RectTransform:
   m_Children:
   - {fileID: 5353335435837223055}
   m_Father: {fileID: 5353335435656240853}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1504,11 +1504,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 1.92}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
+  - {fileID: 340417080821480598}
   - {fileID: 5353335436176768892}
   - {fileID: 304421346786512875}
   - {fileID: 8223641507229612376}
   - {fileID: 5353335435501168428}
-  - {fileID: 340417080821480598}
   m_Father: {fileID: 5353335435090848771}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1612,9 +1612,6 @@ MonoBehaviour:
   humidityText: {fileID: 3651914296138521565}
   pressureText: {fileID: 4913947218093832146}
   temperatureText: {fileID: 5353335436176768883}
-  uuidsensorText: {fileID: 0}
-  materialNameText: {fileID: 0}
-  nameText: {fileID: 0}
 --- !u!1 &5353335435837223048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1825,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5353335435656240853}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1945,6 +1942,7 @@ GameObject:
   - component: {fileID: 3470098637211184643}
   - component: {fileID: 3860574983252516957}
   - component: {fileID: 5475939413016687784}
+  - component: {fileID: 1690464524244602014}
   m_Layer: 0
   m_Name: Canvas info
   m_TagString: Untagged
@@ -2055,6 +2053,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &1690464524244602014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857164036184890528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3cabcbe5b92504a965127495cf87a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uuidsensorText: {fileID: 8995585073528633832}
+  materialNameText: {fileID: 9047922515949953870}
+  nameText: {fileID: 5350785664107672305}
 --- !u!1 &5997705676682342671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2080,7 @@ GameObject:
   - component: {fileID: 8536202571798285835}
   - component: {fileID: 9047922515949953870}
   m_Layer: 0
-  m_Name: materialname (1)
+  m_Name: image name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2153,7 +2166,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.05
   m_fontSizeMax: 0.1
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2745,7 +2758,7 @@ RectTransform:
   - {fileID: 5507114334913854253}
   - {fileID: 7426309734609177521}
   m_Father: {fileID: 5353335435656240853}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
