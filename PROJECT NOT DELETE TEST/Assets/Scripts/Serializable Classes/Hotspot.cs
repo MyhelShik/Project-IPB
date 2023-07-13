@@ -1,9 +1,10 @@
 [System.Serializable]
-public class Hotspot {
+public class Hotspot
+{
+    // public string _id;
     public string name;
-    public byte scaleX;
-    public byte scaleY;
-    public byte scaleZ;
+    public float scaleX;
+    public float scaleY;
+    public float scaleZ;
     public Image[] images;
-
 }
