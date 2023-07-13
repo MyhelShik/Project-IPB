@@ -31,7 +31,7 @@ public class InfoDisplayExtra : MonoBehaviour
     void Start()
     {
         StartCoroutine(GetRequest("http://193.136.194.15:5000/GetData/Klfb64a6c72b0e7e"));
-        StartCoroutine(GetRequest("http://193.136.194.15:5000/GetData/hosts"));
+        StartCoroutine(GetRequest("http://193.136.194.15:5000/hosts"));
     }
 
     IEnumerator GetRequest(string uri)
