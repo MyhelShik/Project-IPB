@@ -11,22 +11,49 @@ public class ImageGetPost : MonoBehaviour
     public RawImage imageObject1;
     public RawImage imageObject2;
 
-    public float refreshInterval = 5f; // Refresh interval in seconds
+    public float refreshInterval = 120f; // Refresh interval in seconds
 
-    private string uri = "http://193.136.194.15:5000/graph/Klfb64a6c72b0e7e";
+    private string uri = "http://193.136.194.15:5000/graph/";
+    private bool isRefreshing = false;
+
+    private string uuid = "";
+    private IEnumerator refreshImages = null;
+
+
+   
 
     void Start()
     {
-        StartCoroutine(RefreshImages());
+
+        uuid = gameObject.transform.parent.parent.parent.parent.GetComponent<ObjectInformation>().Uuid;
+        Debug.Log(">>>>>" + uuid);
+        
+    }
+
+    void OnEnable()
+    {
+        refreshInterval = 1f;
+        refreshImages = RefreshImages();
+        StartCoroutine(refreshImages);
+        Debug.Log("awds");
+    
+    
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("disable");
+        StopCoroutine(refreshImages);
     }
 
     IEnumerator RefreshImages()
     {
-        while (true)
+        do
         {
-            yield return new WaitForSeconds(refreshInterval);
-
-            using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+            if (!isRefreshing)
+            {
+                isRefreshing = true;  
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(uri + uuid))
             {
                 yield return webRequest.SendWebRequest();
 
@@ -38,6 +65,7 @@ public class ImageGetPost : MonoBehaviour
                         // Additional error handling logic or feedback
                         break;
                     case UnityWebRequest.Result.Success:
+                        refreshInterval = 300f;
                         string response = webRequest.downloadHandler.text;
                         GraphData graphData = JsonUtility.FromJson<GraphData>(response);
 
@@ -55,8 +83,12 @@ public class ImageGetPost : MonoBehaviour
                         }
                         break;
                 }
+
+                isRefreshing = false;
             }
-        }
+            yield return new WaitForSeconds(refreshInterval);
+            }
+        } while (true);
     }
 
     private void UpdateVisuals()

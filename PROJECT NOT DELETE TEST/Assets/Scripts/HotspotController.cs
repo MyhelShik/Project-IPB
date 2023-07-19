@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-
+using Newtonsoft.Json;
+using UnityEngine.Networking;
 public class HotspotController : MonoBehaviour
 {
     [Header("Hotspot Initialization Config:")]
@@ -23,6 +24,7 @@ public class HotspotController : MonoBehaviour
     [SerializeField] string typeVideoID = "video";
     [SerializeField] string typeTransitionID = "transition";
 
+    //var
     private string jsonText;
     private GameObject hotspotScenary;
     private MeshRenderer scenaryMeshRenderer;
@@ -37,13 +39,56 @@ public class HotspotController : MonoBehaviour
 
         camera = FindObjectOfType<Camera>();
 
-        InitializeHotspot();
+        StartCoroutine(InitializeHotspot("http://193.136.194.15:5000/hosts"));
+        //InitializeHotspot();
 
     }
 
-    private void InitializeHotspot() 
+
+    IEnumerator InitializeHotspot(string uri)
     {
-        StreamReader reader = new StreamReader(filePath);
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(string.Format("Something went wrong: {0}", webRequest.error));
+                    // Additional error handling logic or feedback
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Hotspot[] hostDataArray = JsonConvert.DeserializeObject<Hotspot[]>(webRequest.downloadHandler.text);
+                    if (hostDataArray.Length > 0)
+                    {
+
+                        hotspot =  hostDataArray[0];
+
+                        CreateHotspotScenary();
+
+                        canvasMapping = Instantiate(canvasMapping, gameObject.transform);
+                        canvasMapping.GetComponent<Canvas>().worldCamera = camera;
+                        
+
+                        scenaryMeshRenderer = hotspotScenary.GetComponent<MeshRenderer>();
+                        scenaryMeshRenderer.material = FindMaterial(hotspot.images[actualIndex].materialName);
+
+                        gameObject.name = "Hotspot Controller [" + hotspot.name + "]";
+
+                        MapImage();
+
+                        //materialNameText.text = hostData.materialName;
+                        //nameText.text = hostData.name;
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void InitializeHotspotLocal() 
+    {
+        /*StreamReader reader = new StreamReader(filePath);
         jsonText = reader.ReadToEnd();
         reader.Close();
 
@@ -52,21 +97,28 @@ public class HotspotController : MonoBehaviour
             Debug.LogError("JSON file is empty.");
             return;
 
-        }
+        }*/
 
-        hotspot = JsonUtility.FromJson<Hotspot>(jsonText);
+        
+        
 
-        CreateHotspotScenary();
+        //hotspot = JsonUtility.FromJson<Hotspot>(jsonText);
 
-        canvasMapping = Instantiate(canvasMapping, gameObject.transform);
-        canvasMapping.GetComponent<Canvas>().worldCamera = camera;
 
-        scenaryMeshRenderer = hotspotScenary.GetComponent<MeshRenderer>();
-        scenaryMeshRenderer.material = FindMaterial(hotspot.images[actualIndex].materialName);
+        // \/
 
-        gameObject.name = "Hotspot Controller [" + hotspot.name + "]";
 
-        MapImage();
+        //CreateHotspotScenary();
+
+        //canvasMapping = Instantiate(canvasMapping, gameObject.transform);
+        //canvasMapping.GetComponent<Canvas>().worldCamera = camera;
+
+        //scenaryMeshRenderer = hotspotScenary.GetComponent<MeshRenderer>();
+        //scenaryMeshRenderer.material = FindMaterial(hotspot.images[actualIndex].materialName);
+
+        //gameObject.name = "Hotspot Controller [" + hotspot.name + "]";
+
+        //MapImage();
 
     }
 
@@ -89,8 +141,8 @@ public class HotspotController : MonoBehaviour
             GameObject newMappingButton = Instantiate(mappingButton, canvasMapping.transform);
             newMappingButton.transform.position = new Vector3(map.positionX, map.positionY, map.positionZ);
             ObjectInformation objectinformation = newMappingButton.GetComponent<ObjectInformation>();
-
             objectinformation.Uuid = map.uuidsensor;
+            Debug.Log("> " + objectinformation.Uuid.ToString());
 
  
             

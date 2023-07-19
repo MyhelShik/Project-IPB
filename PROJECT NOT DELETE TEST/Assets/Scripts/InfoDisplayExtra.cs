@@ -8,8 +8,8 @@ public class InfoDisplayExtra : MonoBehaviour
 {
     public class Data
     {
-        public string Humidity { get; set; }
-        public string Pressure { get; set; }
+        public string Humidity    { get; set; }
+        public string Pressure    { get; set; }
         public string Temperature { get; set; }
     }
 
@@ -17,28 +17,56 @@ public class InfoDisplayExtra : MonoBehaviour
     public TextMeshProUGUI pressureText;
     public TextMeshProUGUI temperatureText;
 
-    public float refreshInterval = 5f; // Refresh interval in seconds
-
-    private string uri = "http://193.136.194.15:5000/GetData/Klfb64a6c72b0e7e";
+    public float refreshInterval = 1f; // Refresh interval in seconds
+                                                //Klfb64a6c72b0e7e
+    private string uri = "http://193.136.194.15:5000/GetData/";
     private bool isRefreshing = false;
+    
+    private string uuid = "";
+
+    private IEnumerator refreshData = null;
+    
 
     void Start()
     {
-        StartCoroutine(RefreshData());
+
+        uuid = gameObject.transform.parent.parent.parent.GetComponent<ObjectInformation>().Uuid;
+        Debug.Log(">>>>>" + uuid);
+        
     }
+
+    void OnEnable()
+    {
+        refreshInterval = 1f;
+        refreshData = RefreshData();
+        StartCoroutine(refreshData);
+        Debug.Log("awds");
+    
+    
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("disable");
+        StopCoroutine(refreshData);
+    }
+
+
 
     IEnumerator RefreshData()
     {
-        while (true)
-        {
+        do {
             if (!isRefreshing)
             {
+                Debug.Log("1");
                 isRefreshing = true;    
 
-                using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+                using (UnityWebRequest webRequest = UnityWebRequest.Get(uri + uuid))
                 {
+                    Debug.Log("2");
                     yield return webRequest.SendWebRequest();
 
+                    Debug.Log("3");
                     switch (webRequest.result)
                     {
                         case UnityWebRequest.Result.ConnectionError:
@@ -47,20 +75,25 @@ public class InfoDisplayExtra : MonoBehaviour
                             // Additional error handling logic or feedback
                             break;
                         case UnityWebRequest.Result.Success:
+                            refreshInterval = 60f;
+                            Debug.Log("4");
                             Data data = JsonConvert.DeserializeObject<Data>(webRequest.downloadHandler.text);
-
+                            Debug.Log(webRequest.downloadHandler.text);
+                            Debug.Log(data.Humidity);
                             humidityText.text = data.Humidity;
                             pressureText.text = data.Pressure;
                             temperatureText.text = data.Temperature;
 
                             break;
                     }
+                    
+                    isRefreshing = false;
                 }
 
-                isRefreshing = false;
             }
 
             yield return new WaitForSeconds(refreshInterval);
-        }
+        }  while (true);
+      
     }
 }
