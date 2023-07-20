@@ -127,7 +127,7 @@ public class HotspotController : MonoBehaviour
         hotspotScenary = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         hotspotScenary.name = "Hotspot Scenary";
         hotspotScenary.transform.parent = gameObject.transform;
-        hotspotScenary.transform.localScale = new Vector3(5,5,5);
+        hotspotScenary.transform.localScale = new Vector3(8,8,8);
         
     }
 
